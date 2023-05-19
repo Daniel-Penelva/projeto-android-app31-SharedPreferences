@@ -16,12 +16,21 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        //SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putString("nome", "Daniel Penelva");
-        editor.putInt("idade", 32);
-        editor.putBoolean("estado",false);
-        editor.apply();
+        //editor.putString("nome", "Daniel Penelva");
+        //editor.putInt("idade", 32);
+        //editor.putBoolean("estado",false);
+        //editor.apply();
+
+        // Resgatando os dados do SharedPreferences
+        String nome = sharedPreferences.getString("nome", "");
+        int idade = sharedPreferences.getInt("idade", 0);
+        boolean estado = sharedPreferences.getBoolean("estado", false);
+
+        Log.i("meu log", "" + nome);
+        Log.i("meu log", "" + Integer.toString(idade));
+        Log.i("meu log", "" + Boolean.toString(estado));
     }
 }
 
@@ -47,4 +56,23 @@ public class MainActivity extends AppCompatActivity {
 *
 * É importante lembrar de chamar o método apply() ou commit() após fazer as alterações, caso contrário, as alterações não
 * serão salvas no SharedPreferences.
+*
+* As linhas 27, 28 e 29 de código seguintes são usadas para recuperar os valores armazenados anteriormente no SharedPreferences.
+*
+* A linha 27: String nome = sharedPreferences.getString("nome", ""); recupera uma string associada à chave "nome"
+* no SharedPreferences. Se não houver uma string armazenada com essa chave, o valor padrão fornecido ("") será retornado.
+*
+* A linha 28: int idade = sharedPreferences.getInt("idade", 0); recupera um valor inteiro associado à chave "idade". Se não houver um valor inteiro armazenado com essa chave, o valor padrão fornecido (0) será retornado.
+*
+* A linha 29: boolean estado = sharedPreferences.getBoolean("estado", false); recupera um valor booleano associado à
+* chave "estado". Se não houver um valor booleano armazenado com essa chave, o valor padrão fornecido (false) será retornado.
+*
+* Em seguida, o script usa o Log para imprimir os valores recuperados. O Log é uma ferramenta de depuração no Android
+* que permite registrar informações relevantes durante a execução do aplicativo. Neste caso, os valores são registrados
+* usando Log.i(), que é usado para mensagens de informação. As mensagens são impressas no console de log do dispositivo.
+*
+* Essas linhas de código imprimirão o valor de nome, idade e estado no console de log, respectivamente.
+
+O primeiro argumento de Log.i() é uma tag que identifica a origem da mensagem no log. Nesse caso, a tag é definida como
+* "meu log". O segundo argumento é a mensagem propriamente dita, que é convertida para uma string usando o método toString().
 * */
